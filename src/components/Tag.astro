@@ -1,0 +1,29 @@
+---
+interface Props {
+    tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<div class="tag">
+    <i class="fa-solid fa-tag"></i>
+    {tag}
+</div>
+
+<style>
+    .tag {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: var(--gray-darker);
+        color: var(--accent-light);
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .tag i {
+        margin-right: 5px;
+        font-size: 16px;
+    }
+</style>

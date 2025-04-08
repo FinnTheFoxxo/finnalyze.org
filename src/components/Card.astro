@@ -1,0 +1,22 @@
+---
+interface Props {
+	extraClasses?: string
+}
+
+const { extraClasses = '' } = Astro.props;
+---
+
+<div class=`card ${extraClasses}`>
+    <slot />
+</div>
+
+<style>
+    .card {
+		background-color: var(--gray);
+		width: 100%;
+		padding: 20px;
+		border-radius: 10px;
+		border: 1px solid var(--accent);
+		color: var(--white);
+    }
+</style>

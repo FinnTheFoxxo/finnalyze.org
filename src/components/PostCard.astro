@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Card from './Card.astro';
+import FormattedDate from './FormattedDate.astro';
+import Tag from './Tag.astro';
+
+type BlogPost = CollectionEntry<'blog'>['data'];
+
+interface Props {
+	id: string
+	post: BlogPost
+}
+
+const { id, post } = Astro.props;
+---
+
+<a class="post" href={`/blog/${id}`}>
+	<Card>
+		<header class="post-head">
+			<h2 class="title">{post.title}</h2>
+			<span class="date">
+				<FormattedDate date={post.pubDate} />
+			</span>
+		</header>
+		<span class="description">
+			{post.description}
+		</span>
+		<div class="tags">
+			{Array(3).fill(0).map((_, i) => (
+				<Tag tag={`Tag ${i}`} />
+			))}
+		</div>
+	</Card>
+</a>
+
+<style>
+	.post {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		text-decoration: none;
+		transition: all 0.2s ease-in-out;
+	}
+
+	.post:hover {
+		box-shadow: 0 0px 4px var(--accent);
+		transform: scale(1.01);
+	}
+
+	.post-head {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.title {
+		font-size: 18px;
+		font-weight: 600;
+margin: 0;
+	}
+
+	.description {
+		font-size: 16px;
+		color: var(--text-light)
+	}
+
+	.date {
+		font-weight: bold;
+		font-size: 12px;
+		color: var(--text-light);
+	}
+</style>
