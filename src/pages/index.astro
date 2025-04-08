@@ -1,77 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import PostCard from '../components/PostCard.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import Card from '../components/Card.astro';
+import type { GetStaticPaths } from "astro";
+import PostList from "../layouts/PostList.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.getDate() - a.data.pubDate.getDate(),
-);
+import { tags } from '../content';
+
+export const getStaticPaths = (() => {
+	return tags.map((tag) => ({
+		params: { tag: tag.slug },
+	}));
+}) satisfies GetStaticPaths;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<ul>
-				{
-					posts.map((post) => (
-						<li>
-							<PostCard id={post.id} post={post.data} />
-						</li>
-					))
-				}
-			</ul>
-			<section class="side">
-				<Card extraClasses="about">
-					<img src="/temp-logo.svg">
-					<br />
-					Come show me how ye bury yer treasure, lad! Give me freedom or give me  the rope. For I shall not take the shackles that subjugate the poor to  uphold the rich. Yarrrr! there be ony two ranks of leader amongst us  pirates.
-				</Card>
-			</section>
-		</main>
-	</body>
-</html>
-
-<style>
-	main {
-		display: flex;
-		gap: 20px;
-	}
-	
-	.side {
-		font-size: 16px;
-		width: 420px;
-	}
-
-	.side :global(.about) {
-		text-align: justify;
-	}
-
-	ul {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		flex: 1;
-	}
-
-	@media (max-width: 1000px) {
-		main {
-			flex-direction: column-reverse;
-		}
-
-		.side {
-			width: 100%;
-			margin-bottom: 50px;
-		}
-	}
-</style>
+<PostList />

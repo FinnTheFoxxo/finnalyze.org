@@ -1,0 +1,172 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Card from '../components/Card.astro';
+import Tag from '../components/Tag.astro';
+
+import { posts, tags } from '../content'
+
+interface Props {
+    tag?: typeof tags[number];
+}
+
+const { tag } = Astro.props as Props;
+
+let allPosts = posts;
+
+if (tag) {
+	allPosts = posts.filter((post) => {
+		return post.data.tags.includes(tag.name);
+	});
+}
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+
+		<main>	
+			{tag && (
+				<h3 class="title">Posts tagged with "{tag.name}"</h3>
+			)}
+			<div class="container">
+				<ul class="posts">
+					<h3 class="mobile-title">
+						{tag ? `Posts tagged with "${tag.name}"` : 'Posts'}
+					</h3>
+
+					{
+						allPosts.map((post) => (
+						<li>
+							<PostCard id={post.id} post={post.data} />
+						</li>
+					))
+				}
+				</ul>
+				<section class="side">
+					<Card extraClasses="about">
+						<img class="logo" src="/temp-logo.svg">
+						Come show me how ye bury yer treasure, lad! Give me freedom or give me  the rope. For I shall not take the shackles that subjugate the poor to  uphold the rich. Yarrrr! there be ony two ranks of leader amongst us  pirates.
+					</Card>
+					<Card extraClasses="tags-card">
+						<h3>Tags</h3>
+						<ul class="tags">
+							{tags.map((tag) => (
+								<li>
+									<a href={`/tags/${tag.slug}`} class="tag">
+										<span class="count">{tag.count}</span>
+										<Tag tag={tag.name} />
+									</a>
+								</li>
+							))}
+						</ul>
+					</Card>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style>
+	.title {
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	.container {
+		display: flex;
+		gap: 20px;
+	}
+	
+	.side {
+		font-size: 16px;
+		width: 420px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.side :global(.about) {
+		text-align: justify;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.side :global(.about) img {
+		width: 140px;;
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.posts {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		flex: 1;
+	}
+
+	h3 {
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.tags h2 {
+		margin: 0;
+	}
+
+    .tags a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+	.mobile-title {
+		display: none;
+	}
+
+	@media (max-width: 1000px) {
+		.container {
+			flex-direction: column-reverse;
+		}
+
+		.side {
+			width: 100%;
+			margin-bottom: 50px;
+		}
+
+		.title {
+			display: none;
+		}
+
+		.mobile-title {
+			display: block;
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+
+		.logo {
+			display: none !important;
+		}
+	}
+</style>

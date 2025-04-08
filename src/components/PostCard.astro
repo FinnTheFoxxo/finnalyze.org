@@ -26,8 +26,8 @@ const { id, post } = Astro.props;
 			{post.description}
 		</span>
 		<div class="tags">
-			{Array(3).fill(0).map((_, i) => (
-				<Tag tag={`Tag ${i}`} />
+			{post.tags.map((tag) => (
+				<Tag tag={tag} />
 			))}
 		</div>
 	</Card>
@@ -55,7 +55,7 @@ const { id, post } = Astro.props;
 	.title {
 		font-size: 18px;
 		font-weight: 600;
-margin: 0;
+		margin: 0;
 	}
 
 	.description {
