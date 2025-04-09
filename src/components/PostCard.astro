@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Card from './Card.astro';
-import FormattedDate from './FormattedDate.astro';
+import Date from './Date.astro';
 import Tag from './Tag.astro';
 
 type BlogPost = CollectionEntry<'blog'>['data'];
@@ -19,7 +19,7 @@ const { id, post } = Astro.props;
 		<header class="post-head">
 			<h2 class="title">{post.title}</h2>
 			<span class="date">
-				<FormattedDate date={post.pubDate} />
+				<Date date={post.pubDate} />
 			</span>
 		</header>
 		<span class="description">

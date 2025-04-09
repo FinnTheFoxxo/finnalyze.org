@@ -2,11 +2,13 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import Date from '../components/Date.astro';
+import { Image } from 'astro:assets';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
 ---
 
 <html lang="en">
@@ -21,16 +23,28 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<div class="prose">
 					<div class="title">
 						<div class="date">
-							<FormattedDate date={pubDate} />
+							<Date date={pubDate} />
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
+										Last updated on <Date date={updatedDate} />
 									</div>
 								)
 							}
 						</div>
 						<h1>{title}</h1>
+							{
+								heroImage && (
+									<Image
+										class:list={['image']}
+										src={heroImage}
+										alt={title}
+										class="hero-image"
+										loading="lazy"
+									/>
+								)
+							}
+						<p class="description">{description}</p>
 						<hr />
 					</div>
 					<slot />
@@ -39,3 +53,53 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</main>
 	</body>
 </html>
+
+<style>
+	.prose {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 1rem;
+	}
+	
+	.title h1 {
+		margin-top: 0;
+	}
+
+	.description {
+		font-size: 1.2em;
+		color: var(--text-light);
+		font-weight: 600;
+	}
+
+	.image {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+
+	}
+
+	@media (max-width: 1000px) {
+		.prose {
+			padding: 1em 0.5rem;
+		}
+	}
+	
+	@media (max-width: 720px) {
+		.date {
+			font-size: 1em;
+		}
+
+		.title h1 {
+			font-size: 1.5em;
+		}
+
+		.description {
+			font-size: 1em;
+		}
+
+		.prose {
+			padding: 1em 0.5rem;
+		}
+	}
+
+</style>
