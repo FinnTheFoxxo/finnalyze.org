@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Date from '../components/Date.astro';
 import { Image } from 'astro:assets';
+import { SITE_TITLE } from 'src/consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -13,7 +14,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={`${title} - ${SITE_TITLE}`} description={description} image={heroImage?.src} />
 	</head>
 
 	<body>
