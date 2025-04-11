@@ -1,0 +1,70 @@
+---
+import BaseHead from "src/components/BaseHead.astro";
+import Header from "src/components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "src/consts";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.props;
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<BaseHead title={title} description={description} image={image} />
+
+        <script is:inline>
+            if (localStorage.getItem("theme") === "light") {
+                document.documentElement.dataset.theme = "light";
+                window.theme = "light";
+            } else {
+                window.theme = "dark";
+            }
+        </script>
+        <script>
+            declare global {
+                interface Window {
+                    theme?: 'dark' | 'light';
+                }
+            }
+
+            document.addEventListener("astro:after-swap", () => {
+                if (window.theme) {
+                    document.documentElement.dataset.theme = window.theme;
+                }
+            });
+
+            window.addEventListener("storage", (event) => {
+                if (event.key === "theme") {
+                    const newTheme = event.newValue as 'dark' | 'light' | null;
+                    if (newTheme) {
+                        document.documentElement.dataset.theme = newTheme;
+                        window.theme = newTheme;
+                    }
+                }
+            });
+        </script>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex: 1;
+    }
+</style>

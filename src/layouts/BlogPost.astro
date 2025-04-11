@@ -1,59 +1,48 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Date from '../components/Date.astro';
 import { Image } from 'astro:assets';
 import { SITE_TITLE } from 'src/consts';
+import Layout from './Layout.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
-
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={`${title} - ${SITE_TITLE}`} description={description} image={heroImage?.src} />
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<Date date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <Date date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-							{
-								heroImage && (
-									<Image
-										class:list={['image']}
-										src={heroImage}
-										alt={title}
-										class="hero-image"
-										loading="lazy"
-									/>
-								)
-							}
-						<p class="description">{description}</p>
-						<hr />
-					</div>
-					<slot />
+<Layout title={`${title} - ${SITE_TITLE}`} description={description} image={heroImage?.src}>
+	<article>
+		<div class="prose">
+			<div class="title">
+				<div class="date">
+					<Date date={pubDate} />
+					{
+						updatedDate && (
+							<div class="last-updated-on">
+								Last updated on <Date date={updatedDate} />
+							</div>
+						)
+					}
 				</div>
-			</article>
-		</main>
-	</body>
-</html>
+				<h1>{title}</h1>
+					{
+						heroImage && (
+							<Image
+								class:list={['image']}
+								src={heroImage}
+								alt={title}
+								class="hero-image"
+								loading="lazy"
+							/>
+						)
+					}
+				<p class="description">{description}</p>
+				<hr />
+			</div>
+			<slot />
+		</div>
+	</article>
+</Layout>
 
 <style>
 	.prose {

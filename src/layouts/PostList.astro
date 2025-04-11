@@ -1,12 +1,11 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import PostCard from '../components/PostCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Card from '../components/Card.astro';
 import Tag from '../components/Tag.astro';
 
 import { posts, tags } from '../content'
+import Layout from './Layout.astro';
 
 interface Props {
     tag?: typeof tags[number];
@@ -21,59 +20,50 @@ if (tag) {
 		return post.data.tags.includes(tag.name);
 	});
 }
-
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
+<Layout title={tag ? `${tag.name} - ${SITE_TITLE}` : SITE_TITLE} description={SITE_DESCRIPTION}>
+	{tag && (
+		<h3 class="title">Posts tagged with "{tag.name}"</h3>
+	)}
 
-		<main>	
-			{tag && (
-				<h3 class="title">Posts tagged with "{tag.name}"</h3>
-			)}
-			<div class="container">
-				<ul class="posts">
-					<h3 class="mobile-title">
-						{tag ? `Posts tagged with "${tag.name}"` : 'Posts'}
-					</h3>
-
-					{
-						allPosts.map((post) => (
+	<div class="container">
+		<ul class="posts">
+			<h3 class="mobile-title">
+				{tag ? `Posts tagged with "${tag.name}"` : 'Posts'}
+			</h3>
+			
+			{
+				allPosts.map((post) => (
+					<li>
+						<PostCard id={post.id} post={post.data} />
+					</li>
+				))
+			}
+		</ul>
+		<section class="side">
+			<Card extraClasses="about">
+				<img class="logo dark-only" src="/temp-logo.svg">
+				<img class="logo light-only" src="/temp-logo-light.svg">
+				Come show me how ye bury yer treasure, lad! Give me freedom or give me  the rope. For I shall not take the shackles that subjugate the poor to  uphold the rich. Yarrrr! there be ony two ranks of leader amongst us  pirates.
+			</Card>
+			<Card extraClasses="tags-card">
+				<h3>Tags</h3>
+				<ul class="tags">
+					{tags.map((tag) => (
 						<li>
-							<PostCard id={post.id} post={post.data} />
+							<a href={`/tags/${tag.slug}`} class="tag">
+								<strong class="count">{tag.count}</spastrong>
+								<Tag tag={tag.name} />
+							</a>
 						</li>
-					))
-				}
+					))}
 				</ul>
-				<section class="side">
-					<Card extraClasses="about">
-						<img class="logo" src="/temp-logo.svg">
-						Come show me how ye bury yer treasure, lad! Give me freedom or give me  the rope. For I shall not take the shackles that subjugate the poor to  uphold the rich. Yarrrr! there be ony two ranks of leader amongst us  pirates.
-					</Card>
-					<Card extraClasses="tags-card">
-						<h3>Tags</h3>
-						<ul class="tags">
-							{tags.map((tag) => (
-								<li>
-									<a href={`/tags/${tag.slug}`} class="tag">
-										<span class="count">{tag.count}</span>
-										<Tag tag={tag.name} />
-									</a>
-								</li>
-							))}
-						</ul>
-					</Card>
-				</section>
-			</div>
-		</main>
-	</body>
-</html>
-
+			</Card>
+		</section>
+	</div>
+</Layout>
+	
 <style>
 	.title {
 		margin-top: 0;

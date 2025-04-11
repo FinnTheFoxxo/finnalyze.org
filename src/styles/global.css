@@ -2,19 +2,43 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import '@fontsource/inter';
 
-:root {
-	--white: #ffffff;
-	--gray-light: #242424;
-	--gray: #1d1d1d;
-	--gray-dark: #1a1a1a;
-	--gray-darker: #161616;
+html[data-theme='dark'] {
+	--text: #ffffff;
+	--background: #242424;
+	--primary: #1d1d1d;
+	--header-bg: #1a1a1a;
+	--header-text: #ffffff;
 	--accent: #ff8000;
 	--accent-light: #f39538;
 	--text-light: #bcbcbc;
+	--tag-bg: #161616;
+	--tag-color: var(--accent-light);
+}
+
+html[data-theme='light'] {
+	--text: #000000;
+	--background: #f3f3f3;
+	--primary: #ffffff;
+	--header-bg: #242424;
+	--header-text: #ffffff;
+	--accent: #ff8000;
+	--accent-light: #f39538;
+	--text-light: #4a4a4a;
+	--tag-bg: var(--accent-light);
+	--tag-color: #ffffff;
+}
+
+html[data-theme='dark'] .light-only {
+	display: none !important;
+}
+
+html[data-theme='light'] .dark-only {
+	display: none !important;
 }
 
 *, *:before, *:after {
 	box-sizing: border-box;
+	transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
 html {
@@ -26,8 +50,8 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background-color: var(--gray-light);
-	color: var(--white);
+	background-color: var(--background);
+	color: var(--text);
 	line-height: 1.7;
 }
 

@@ -4,19 +4,44 @@
 			<img class="logo" src="/temp-logo.svg" alt="Logo" />
 		</a>
 	</nav>
+	<div id="theme-toggle">
+		<i class="dark-only fa-solid fa-moon"></i>
+		<i class="light-only fa-solid fa-sun"></i>
+	</div>
 </header>
+
+<script>
+	const updateTheme = (theme: 'dark' | 'light') => {
+		document.documentElement.dataset.theme = theme;
+		localStorage.setItem("theme", theme);
+		window.theme = theme;
+	};
+
+	document.addEventListener("astro:page-load", () => {
+		const themeToggle = document.getElementById("theme-toggle");
+		
+		themeToggle?.addEventListener("click", () => {
+			const currentTheme = localStorage.getItem("theme") || "dark";
+			const newTheme = currentTheme === "dark" ? "light" : "dark";
+			updateTheme(newTheme);
+		});
+	});
+</script>
+
 <style>
 	header {
 		margin: 0;
 		padding: 0 3em;
-		background-color: var(--gray-dark);
+		background-color: var(--header-bg);
+		color: var(--header-text);
 		height: 3.5rem;
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 	}
 
 	header a {
-		color: var(--white);
+		color: var(--text);
 		text-decoration: none;
 	}
 
@@ -26,6 +51,10 @@
 
 	.logo {
 		height: 1.5rem;
+	}
+
+	#theme-toggle {
+		cursor: pointer;
 	}
 
 	@media (max-width: 720px) {
