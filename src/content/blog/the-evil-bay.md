@@ -1,8 +1,11 @@
 ---
-title: 'The Evil at Bay'
-description: 'An analysis of the GITMO facility, and its usage of torture.'
-pubDate: 'Jul 19 2025'
-heroImage: '@images/techniques-vs-enhanced.png'
+title: The Evil at Bay
+description: An analysis of the GITMO facility, and its usage of torture.
+pubDate: Jul 19 2025
+heroImage: "@images/techniques-vs-enhanced.png"
+tags:
+  - politics
+  - national-security
 ---
 
 The war on terror that began in the early 2000s as a result of the 9/11 terrorist attacks proved to be a challenging time in America’s history—and as a direct result the war on terror claimed over an estimated 900,000 lives, without taking into account external factors such as starvation or disease. [1] During the war, the United States Intelligence Community (IC) acted upon various forms of intelligence and used several methods of obtaining said intelligence. While not all methods of intelligence gathering live up to high moral standards, one form of intelligence gathering stands out among the rest—a horrific means of dehumanizing and violating individuals in a foul attempt of gaining intelligence. These are the CIA's "enhanced interrogation techniques."
@@ -41,11 +44,16 @@ The CIA never conducted an accurate accounting of individuals it detained, and t
 Despite all of this, the GITMO facility still remains operational, and while there have been attempts by several administrations to close the facility, none have had any noteworthy success. Overall, the CIA's actions taken during the war on terror are unacceptable, and measures should be employed in the future to ensure rights for future detainees. The act of torture has no place alongside the art of intelligence, and the act of torture should be outlawed entirely. 
 
 # References
-[1] Watson Institute for International and Public Affairs, “Human and Budgetary Costs to Date of the U.S. War in Afghanistan, 2001-2022,” _The Costs of War_, Aug. 2021. https://watson.brown.edu/costsofwar/figures/2021/human-and-budgetary-costs-date-us-war-afghanistan-2001-2022
+<span id="ref-1">[1]</span> Watson Institute for International and Public Affairs, “Human and Budgetary Costs to Date of the U.S. War in Afghanistan, 2001-2022,” _The Costs of War_, Aug. 2021. https://watson.brown.edu/costsofwar/figures/2021/human-and-budgetary-costs-date-us-war-afghanistan-2001-2022
+
 [2] The New York Times, “The Guantánamo Docket,” _The New York Times_, Jun. 08, 2021. Available: https://www.nytimes.com/interactive/2021/us/guantanamo-bay-detainees.html
+
 [3] The White House, “President Issues Military Order,” _georgewbush-whitehouse.archives.gov_, Nov. 13, 2001. https://georgewbush-whitehouse.archives.gov/news/releases/2001/11/20011113-27.html
+
 [4] National Archives, “Platt Amendment (1903),” _National Archives_, Feb. 08, 2022. https://www.archives.gov/milestone-documents/platt-amendment
+
 [5] National Security Archive, “Senate Intelligence Committee Study of the CIA’s Detention and Interrogation Program,” _nsarchive.gwu.edu_, Dec. 09, 2014. https://nsarchive2.gwu.edu/torture_archive/docs/Findings%20and%20Conclusions.pdf
+
 [6] Central Intelligence Agency, “Review of Interrogation Program,” _cia.gov_, Apr. 20, 2021. https://www.cia.gov/readingroom/docs/REVIEW%20OF%20INTERROGATION%20P[15908385].pdf
 
 ---
