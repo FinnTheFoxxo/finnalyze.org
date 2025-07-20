@@ -1,6 +1,6 @@
 ---
 title: The Evil at Bay
-description: An analysis of the GITMO facility, and its usage of torture.
+description: An analysis of the GITMO facility and its usage of torture.
 pubDate: Jul 19 2025
 heroImage: "@images/techniques-vs-enhanced.png"
 tags:
