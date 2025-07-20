@@ -8,7 +8,7 @@ import { posts, tags } from '../content'
 import Layout from './Layout.astro';
 
 interface Props {
-    tag?: typeof tags[number];
+	tag?: typeof tags[number];
 }
 
 const { tag } = Astro.props as Props;
@@ -42,12 +42,20 @@ if (tag) {
 			}
 		</ul>
 		<section class="side">
-			<Card extraClasses="about">
-				<img class="logo dark-only" src="/temp-logo.svg">
-				<img class="logo light-only" src="/temp-logo-light.svg">
-				Come show me how ye bury yer treasure, lad! Give me freedom or give me  the rope. For I shall not take the shackles that subjugate the poor to  uphold the rich. Yarrrr! there be ony two ranks of leader amongst us  pirates.
+			<Card class="about">
+				{ SITE_DESCRIPTION }
+				<div class="social">
+					<a href="https://ko-fi.com/fiinn" target="_blank" rel="noopener noreferrer">
+						<img src="/kofi-logo.svg" alt="Ko-fi" />
+						Ko-fi
+					</a>
+					<a href="https://t.me/finnthefoxxo" target="_blank" rel="noopener noreferrer">
+						<i class="fab fa-telegram"></i>
+						Telegram
+					</a>
+				</div>
 			</Card>
-			<Card extraClasses="tags-card">
+			<Card class="tags-card">
 				<h3>Tags</h3>
 				<ul class="tags">
 					{tags.map((tag) => (
@@ -74,7 +82,7 @@ if (tag) {
 		display: flex;
 		gap: 1rem;
 	}
-	
+
 	.side {
 		font-size: 0.8rem;
 		width: 21rem;
@@ -85,14 +93,38 @@ if (tag) {
 
 	.side :global(.about) {
 		text-align: justify;
-		display: flex;
-		flex-direction: column;
 	}
 
-	.side :global(.about) img {
-		width: 7rem;;
-		display: block;
-		margin-bottom: 0.5rem;
+	.social {
+		display: flex;
+		gap: 0.5rem;
+		width: 100%;
+		justify-content: center;
+		margin-top: 0.75rem;
+	}
+
+	.social > a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.25rem;
+		background-color: var(--accent);
+		border-radius: 2rem;
+		padding: 0.1rem 0.5rem;
+		font-size: 1rem;
+		color: var(--white);
+		font-weight: 600;
+		font-size: 0.8rem;
+		width: 5.5rem;
+	}
+
+	.social > a:hover {
+		background-color: var(--accent-light);
+	}
+
+	.social img {
+		width: 1.1rem;
+		height: auto;
 	}
 
 	.posts {
@@ -154,10 +186,6 @@ if (tag) {
 			margin-top: 0;
 			font-size: 1.5rem;
 			font-weight: 400;
-		}
-
-		.logo {
-			display: none !important;
 		}
 	}
 </style>

@@ -1,5 +1,6 @@
 ---
 import BaseHead from "src/components/BaseHead.astro";
+import Footer from "src/components/Footer.astro";
 import Header from "src/components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "src/consts";
 
@@ -54,6 +55,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
 		<main>
 			<slot />
 		</main>
+        <Footer />
 	</body>
 </html>
 

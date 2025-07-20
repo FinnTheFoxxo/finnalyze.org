@@ -1,12 +1,12 @@
 ---
 interface Props {
-	extraClasses?: string
+	class?: string
 }
 
-const { extraClasses = '' } = Astro.props;
+const { class: className = '' } = Astro.props;
 ---
 
-<div class=`card ${extraClasses}`>
+<div class=`card ${className}`>
     <slot />
 </div>
 

@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.2.3",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.3.0",
-    "@fontsource/inter": "^5.2.5",
+    "@astrojs/mdx": "4.3.1",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "3.4.1",
+    "@fontsource/inter": "^5.2.6",
     "@fortawesome/fontawesome-free": "^6.7.2",
-    "astro": "^5.6.1",
+    "astro": "5.12.0",
     "normalize.css": "^8.0.1",
     "typescript": "^5.8.3"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

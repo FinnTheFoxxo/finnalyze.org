@@ -1,5 +1,7 @@
 @import 'normalize.css';
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+@import '@fortawesome/fontawesome-free/css/solid.min.css';
+@import '@fortawesome/fontawesome-free/css/brands.min.css';
 @import '@fontsource/inter';
 
 html[data-theme='dark'] {
@@ -13,11 +15,12 @@ html[data-theme='dark'] {
 	--text-light: #bcbcbc;
 	--tag-bg: #161616;
 	--tag-color: var(--accent-light);
+	--white: #ffffff;
 }
 
 html[data-theme='light'] {
 	--text: #000000;
-	--background: #f3f3f3;
+	--background: #f4f4f4;
 	--primary: #ffffff;
 	--header-bg: #242424;
 	--header-text: #ffffff;
@@ -26,6 +29,7 @@ html[data-theme='light'] {
 	--text-light: #4a4a4a;
 	--tag-bg: var(--accent-light);
 	--tag-color: #ffffff;
+	--white: #ffffff;
 }
 
 html[data-theme='dark'] .light-only {
