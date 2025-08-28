@@ -53,6 +53,10 @@ if (tag) {
 						<i class="fab fa-telegram"></i>
 						Telegram
 					</a>
+					<a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+						<i class="fas fa-rss"></i>
+						RSS
+					</a>
 				</div>
 			</Card>
 			<Card class="tags-card">
@@ -101,6 +105,7 @@ if (tag) {
 		width: 100%;
 		justify-content: center;
 		margin-top: 0.75rem;
+		flex-wrap: wrap;
 	}
 
 	.social > a {
@@ -186,6 +191,12 @@ if (tag) {
 			margin-top: 0;
 			font-size: 1.5rem;
 			font-weight: 400;
+		}
+	}
+
+	@media (max-width: 306px) {
+		.social > a {
+			width: 100%;
 		}
 	}
 </style>
