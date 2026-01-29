@@ -1,6 +1,6 @@
 ---
 title: The Dual-Faced Agendas
-description: An analysis on Trump's economic and immigration policy and how it's more than meets the eye. From Trump's threat to Greenland to the execution of Renée Good and Alex Pretti.
+description: An analysis on Trump's economic and immigration policy and how it's more than meets the eye. From Trump's threat on Greenland to the execution of Renée Good and Alex Pretti.
 pubDate: Jan 29 2026
 heroImage: "@images/pretti-and-good.png"
 tags:
