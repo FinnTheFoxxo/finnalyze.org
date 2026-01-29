@@ -4,8 +4,8 @@ description: An analysis on Trump's economic and immigration policy and how it's
 pubDate: Jan 29 2026
 heroImage: "@images/pretti-and-good.png"
 tags:
-  - current-events
   - politics
+  - current-events
 ---
 The Trump administration continuously emphasizes how important immigration and economic policy is. When Trump took office for his 2nd term, it quickly became apparent that it wasn't just about cracking down on illegal immigration or bettering the U.S. economy—it was about leverage. 
 
