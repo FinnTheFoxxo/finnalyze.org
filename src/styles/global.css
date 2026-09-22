@@ -59,6 +59,10 @@ body {
 	line-height: 1.7;
 }
 
+.date {
+	white-space: nowrap;
+}
+
 main {
 	padding: 1em 3em;
 	width: 100%;
