@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "8.0.1",
+    "@astrojs/mdx": "8.0.2",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "3.7.4",
     "@fontsource/inter": "^5.2.6",
     "@fortawesome/fontawesome-free": "^7.3.1",
-    "astro": "7.3.2",
+    "astro": "7.3.4",
     "normalize.css": "^8.0.1",
     "typescript": "^7.0.2"
   },
