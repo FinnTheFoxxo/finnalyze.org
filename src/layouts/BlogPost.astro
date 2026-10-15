@@ -49,8 +49,61 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		max-width: 800px;
 		margin: 0 auto;
 		padding: 1rem;
+
+		:global(table) {
+			display: block;
+			width: 120%;
+			max-width: calc(100vw - 2rem);
+			max-height: 50rem;
+			overflow: auto;
+			margin: 2rem 0;
+			border-radius: 0.5rem;
+			box-shadow: 0 0 0 1px var(--header-bg);
+			position: relative;
+			background: var(--primary);
+			font-size: 0.85em;
+			line-height: 1.5;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		:global(th),
+		:global(td) {
+			padding: 0.85rem 1rem;
+			border-bottom: 1px solid var(--background);
+			border-right: 1px solid var(--background);
+			text-align: left;
+			vertical-align: top;
+		}
+
+		:global(th:last-child),
+		:global(td:last-child) {
+			border-right: 0;
+		}
+
+		:global(th) {
+			position: sticky;
+			top: 0;
+			background: var(--header-bg);
+			color: var(--header-text);
+			font-weight: 700;
+			border-bottom: 2px solid var(--accent);
+			white-space: nowrap;
+		}
+
+		:global(tbody tr:nth-child(even)) {
+			background: var(--background);
+		}
+
+		:global(tbody tr:hover) {
+			background: var(--tag-bg);
+		}
+
+		:global(tbody tr:last-child td) {
+			border-bottom: 0;
+		}
 	}
-	
+
 	.title h1 {
 		margin-top: 0;
 	}
@@ -69,9 +122,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	}
 
 	@media (max-width: 1000px) {
-		.prose {
-			padding: 1em 0.5rem;
-		}
 	}
 	
 	@media (max-width: 720px) {
