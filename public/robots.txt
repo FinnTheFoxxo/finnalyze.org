@@ -1,1 +1,2 @@
+Sitemap: https://finnalyze.org/sitemap-index.xml
 Sitemap: https://finnalyze.org/sitemap-0.xml
