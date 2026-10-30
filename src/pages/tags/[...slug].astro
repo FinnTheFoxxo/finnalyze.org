@@ -1,19 +1,19 @@
 ---
-import PostList from "../../layouts/PostList.astro";
+import PostList from '../../layouts/PostList.astro';
 import { tags } from '../../content';
-import type { GetStaticPaths } from "astro";
+import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths = (() => {
-    return tags.map((tag) => ({
-        params: { slug: tag.slug },
-    }));
+  return tags.map((tag) => ({
+    params: { slug: tag.slug },
+  }));
 }) satisfies GetStaticPaths;
 
 const { slug } = Astro.params;
 const tag = tags.find((tag) => tag.slug === slug);
 
 if (!tag) {
-    throw new Error(`Tag not found: ${slug}`);
+  throw new Error(`Tag not found: ${slug}`);
 }
 ---
 

@@ -10,136 +10,134 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<Layout title={`${title} - ${SITE_TITLE}`} description={description} image={heroImage?.src}>
-	<article>
-		<div class="prose">
-			<div class="title">
-				<div class="date">
-					<Date date={pubDate} />
-					{
-						updatedDate && (
-							<div class="last-updated-on">
-								Last updated on <Date date={updatedDate} />
-							</div>
-						)
-					}
-				</div>
-				<h1>{title}</h1>
-					{
-						heroImage && (
-							<Image
-								class:list={['image']}
-								src={heroImage}
-								alt={title}
-								class="hero-image"
-								loading="eager"
-							/>
-						)
-					}
-				<p class="description">{description}</p>
-				<hr />
-			</div>
-			<slot />
-		</div>
-	</article>
+<Layout
+  title={`${title} - ${SITE_TITLE}`}
+  description={description}
+  image={heroImage?.src}
+>
+  <article>
+    <div class="prose">
+      <div class="title">
+        <div class="date">
+          <Date date={pubDate} />
+          {updatedDate && (
+            <div class="last-updated-on">
+              Last updated on <Date date={updatedDate} />
+            </div>
+          )}
+        </div>
+        <h1>{title}</h1>
+        {heroImage && (
+          <Image
+            class:list={['image']}
+            src={heroImage}
+            alt={title}
+            class="hero-image"
+            loading="eager"
+          />
+        )}
+        <p class="description">{description}</p>
+        <hr />
+      </div>
+      <slot />
+    </div>
+  </article>
 </Layout>
 
 <style>
-	.prose {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 1rem;
+  .prose {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
 
-		:global(table) {
-			display: block;
-			width: 120%;
-			max-width: calc(100vw - 2rem);
-			max-height: 50rem;
-			overflow: auto;
-			margin: 2rem 0;
-			border-radius: 0.5rem;
-			box-shadow: 0 0 0 1px var(--header-bg);
-			position: relative;
-			background: var(--primary);
-			font-size: 0.85em;
-			line-height: 1.5;
-			left: 50%;
-			transform: translateX(-50%);
-		}
+    :global(table) {
+      display: block;
+      width: 120%;
+      max-width: calc(100vw - 2rem);
+      max-height: 50rem;
+      overflow: auto;
+      margin: 2rem 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 0 1px var(--header-bg);
+      position: relative;
+      background: var(--primary);
+      font-size: 0.85em;
+      line-height: 1.5;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-		:global(th),
-		:global(td) {
-			padding: 0.55rem 1rem;
-			border-bottom: 1px solid var(--background);
-			border-right: 1px solid var(--background);
-			text-align: left;
-			vertical-align: top;
-		}
+    :global(th),
+    :global(td) {
+      padding: 0.55rem 1rem;
+      border-bottom: 1px solid var(--background);
+      border-right: 1px solid var(--background);
+      text-align: left;
+      vertical-align: top;
+    }
 
-		:global(th:last-child),
-		:global(td:last-child) {
-			border-right: 0;
-		}
+    :global(th:last-child),
+    :global(td:last-child) {
+      border-right: 0;
+    }
 
-		:global(th) {
-			position: sticky;
-			top: 0;
-			background: var(--header-bg);
-			color: var(--header-text);
-			font-weight: 700;
-			border-bottom: 2px solid var(--accent);
-			white-space: nowrap;
-		}
+    :global(th) {
+      position: sticky;
+      top: 0;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 700;
+      border-bottom: 2px solid var(--accent);
+      white-space: nowrap;
+    }
 
-		:global(tbody tr:nth-child(even)) {
-			background: var(--background);
-		}
+    :global(tbody tr:nth-child(even)) {
+      background: var(--background);
+    }
 
-		:global(tbody tr:hover) {
-			background: var(--tag-bg);
-		}
+    :global(tbody tr:hover) {
+      background: var(--tag-bg);
+    }
 
-		:global(tbody tr:last-child td) {
-			border-bottom: 0;
-		}
-	}
+    :global(tbody tr:last-child td) {
+      border-bottom: 0;
+    }
+  }
 
-	.title h1 {
-		margin-top: 0;
-	}
+  .title h1 {
+    margin-top: 0;
+  }
 
-	.description {
-		font-size: 1.2em;
-		color: var(--text-light);
-		font-weight: 600;
-	}
+  .description {
+    font-size: 1.2em;
+    color: var(--text-light);
+    font-weight: 600;
+  }
 
-	.image {
-		width: 100%;
-		height: auto;
-		object-fit: contain;
+  .image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 
-	}
+  @media (max-width: 1000px) {
+  }
 
-	@media (max-width: 1000px) {
-	}
-	
-	@media (max-width: 720px) {
-		.date {
-			font-size: 1em;
-		}
+  @media (max-width: 720px) {
+    .date {
+      font-size: 1em;
+    }
 
-		.title h1 {
-			font-size: 1.5em;
-		}
+    .title h1 {
+      font-size: 1.5em;
+    }
 
-		.description {
-			font-size: 1em;
-		}
+    .description {
+      font-size: 1em;
+    }
 
-		.prose {
-			padding: 1em 0.5rem;
-		}
-	}
-
+    .prose {
+      padding: 1em 0.5rem;
+    }
+  }
 </style>

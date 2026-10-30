@@ -4,11 +4,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Card from '../components/Card.astro';
 import Tag from '../components/Tag.astro';
 
-import { posts, tags } from '../content'
+import { posts, tags } from '../content';
 import Layout from './Layout.astro';
 
 interface Props {
-	tag?: typeof tags[number];
+  tag?: (typeof tags)[number];
 }
 
 const { tag } = Astro.props as Props;
@@ -16,194 +16,201 @@ const { tag } = Astro.props as Props;
 let allPosts = posts;
 
 if (tag) {
-	allPosts = posts.filter((post) => {
-		return post.data.tags.includes(tag.name);
-	});
+  allPosts = posts.filter((post) => {
+    return post.data.tags.includes(tag.name);
+  });
 }
 ---
 
-<Layout title={tag ? `${tag.name} - ${SITE_TITLE}` : SITE_TITLE} description={SITE_DESCRIPTION}>
-	{tag && (
-		<h3 class="title">Posts tagged with "{tag.name}"</h3>
-	)}
+<Layout
+  title={tag ? `${tag.name} - ${SITE_TITLE}` : SITE_TITLE}
+  description={SITE_DESCRIPTION}
+>
+  {tag && <h3 class="title">Posts tagged with "{tag.name}"</h3>}
 
-	<div class="container">
-		<ul class="posts">
-			<h3 class="mobile-title">
-				{tag ? `Posts tagged with "${tag.name}"` : 'Posts'}
-			</h3>
-			
-			{
-				allPosts.map((post) => (
-					<li>
-						<PostCard id={post.id} post={post.data} />
-					</li>
-				))
-			}
-		</ul>
-		<section class="side">
-			<Card class="about">
-				{ SITE_DESCRIPTION }
-				<div class="social">
-					<a href="https://ko-fi.com/fiinn" target="_blank" rel="noopener noreferrer">
-						<img src="/kofi-logo.svg" alt="Ko-fi" />
-						Ko-fi
-					</a>
-					<a href="https://t.me/finnthefoxxo" target="_blank" rel="noopener noreferrer">
-						<i class="fab fa-telegram"></i>
-						Telegram
-					</a>
+  <div class="container">
+    <ul class="posts">
+      <h3 class="mobile-title">
+        {tag ? `Posts tagged with "${tag.name}"` : 'Posts'}
+      </h3>
+
+      {allPosts.map((post) => (
+        <li>
+          <PostCard id={post.id} post={post.data} />
+        </li>
+      ))}
+    </ul>
+    <section class="side">
+      <Card class="about">
+        {SITE_DESCRIPTION}
+        <div class="social">
+          <a
+            href="https://ko-fi.com/fiinn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/kofi-logo.svg" alt="Ko-fi" />
+            Ko-fi
+          </a>
+          <a
+            href="https://t.me/finnthefoxxo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-telegram"></i>
+            Telegram
+          </a>
           <a href="mailto:finnoverflow@protonmail.com">
-						<i class="fas fa-envelope"></i>
-						E-mail
-					</a>
-					<a href="/rss.xml" target="_blank" rel="noopener noreferrer">
-						<i class="fas fa-rss"></i>
-						RSS
-					</a>
-				</div>
-			</Card>
-			<Card class="tags-card">
-				<h3>Tags</h3>
-				<ul class="tags">
-					{tags.map((tag) => (
-						<li>
-							<a href={`/tags/${tag.slug}`} class="tag">
-								<strong class="count">{tag.count}</strong>
-								<Tag tag={tag.name} />
-							</a>
-						</li>
-					))}
-				</ul>
-			</Card>
-		</section>
-	</div>
+            <i class="fas fa-envelope"></i>
+            E-mail
+          </a>
+          <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-rss"></i>
+            RSS
+          </a>
+        </div>
+      </Card>
+      <Card class="tags-card">
+        <h3>Tags</h3>
+        <ul class="tags">
+          {tags.map((tag) => (
+            <li>
+              <a href={`/tags/${tag.slug}`} class="tag">
+                <strong class="count">{tag.count}</strong>
+                <Tag tag={tag.name} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Card>
+    </section>
+  </div>
 </Layout>
-	
+
 <style>
-	.title {
-		margin-top: 0;
-		margin-bottom: 1rem;
-	}
+  .title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
 
-	.container {
-		display: flex;
-		gap: 1rem;
-	}
+  .container {
+    display: flex;
+    gap: 1rem;
+  }
 
-	.count {
-		margin-right: 4px;
-	}
+  .count {
+    margin-right: 4px;
+  }
 
-	.side {
-		font-size: 0.8rem;
-		width: 21rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
+  .side {
+    font-size: 0.8rem;
+    width: 21rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-	.side :global(.about) {
-		text-align: justify;
-	}
+  .side :global(.about) {
+    text-align: justify;
+  }
 
-	.social {
-		display: flex;
-		gap: 0.5rem;
-		width: 100%;
-		margin-top: 0.75rem;
-		flex-wrap: wrap;
-	}
+  .social {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
 
-	.social > a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 0.25rem;
-		background-color: var(--accent);
-		border-radius: 2rem;
-		padding: 0.1rem 0.5rem;
-		font-size: 1rem;
-		color: var(--white);
-		font-weight: 600;
-		font-size: 0.8rem;
-		width: 5.5rem;
-	}
+  .social > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: var(--accent);
+    border-radius: 2rem;
+    padding: 0.1rem 0.5rem;
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.8rem;
+    width: 5.5rem;
+  }
 
-	.social > a:hover {
-		background-color: var(--accent-light);
-	}
+  .social > a:hover {
+    background-color: var(--accent-light);
+  }
 
-	.social img {
-		width: 1.1rem;
-		height: auto;
-	}
+  .social img {
+    width: 1.1rem;
+    height: auto;
+  }
 
-	.posts {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		flex: 1;
-	}
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
 
-	h3 {
-		margin-top: 0;
-		margin-bottom: 0.5rem;
-	}
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
 
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 
-	.tags h2 {
-		margin: 0;
-	}
+  .tags h2 {
+    margin: 0;
+  }
 
-    .tags a {
-        color: var(--text-light);
-        text-decoration: none;
-        font-size: 0.6rem;
-        font-weight: 500;
+  .tags a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 500;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
+  @media (max-width: 1000px) {
+    .container {
+      flex-direction: column-reverse;
     }
 
-	.mobile-title {
-		display: none;
-	}
+    .side {
+      width: 100%;
+      margin-bottom: 2.5rem;
+    }
 
-	@media (max-width: 1000px) {
-		.container {
-			flex-direction: column-reverse;
-		}
+    .title {
+      display: none;
+    }
 
-		.side {
-			width: 100%;
-			margin-bottom: 2.5rem;
-		}
+    .mobile-title {
+      display: block;
+      text-align: center;
+      margin-top: 0;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+  }
 
-		.title {
-			display: none;
-		}
-
-		.mobile-title {
-			display: block;
-			text-align: center;
-			margin-top: 0;
-			font-size: 1.5rem;
-			font-weight: 400;
-		}
-	}
-
-	@media (max-width: 306px) {
-		.social > a {
-			width: 100%;
-		}
-	}
+  @media (max-width: 306px) {
+    .social > a {
+      width: 100%;
+    }
+  }
 </style>

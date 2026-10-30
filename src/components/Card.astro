@@ -1,22 +1,22 @@
 ---
 interface Props {
-	class?: string
+  class?: string;
 }
 
 const { class: className = '' } = Astro.props;
 ---
 
 <div class=`card ${className}`>
-    <slot />
+  <slot />
 </div>
 
 <style>
-	.card {
-		background-color: var(--primary);
-		width: 100%;
-		padding: 1rem;
-		border-radius: 0.5rem;
-		border: 0.05rem solid var(--accent);
-		color: var(--text);
-	}
+  .card {
+    background-color: var(--primary);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 0.05rem solid var(--accent);
+    color: var(--text);
+  }
 </style>

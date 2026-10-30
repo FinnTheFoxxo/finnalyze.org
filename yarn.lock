@@ -90,7 +90,7 @@
     "@astrojs/compiler-binding-win32-arm64-msvc" "0.5.2"
     "@astrojs/compiler-binding-win32-x64-msvc" "0.5.2"
 
-"@astrojs/compiler-rs@^0.5.1":
+"@astrojs/compiler-rs@^0.5.1", "@astrojs/compiler-rs@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler-rs/-/compiler-rs-0.5.2.tgz#0a44e10f9d01f94312a81f904d154317595ee912"
   integrity sha512-IvwYLB8t1M86rKO4oPdBi9GP4gzXcgrVlNgocjwos1jeeUuEIV8d9Crn1PvYD/5IKteWOxpIHomf7e8iYlkE+Q==
@@ -644,6 +644,11 @@
   version "0.156.0"
   resolved "https://registry.yarnpkg.com/@oxc-project/types/-/types-0.156.0.tgz#00e35b1ead490d81b4c7fe1dbfe35fc55e89c5e6"
   integrity sha512-1Duyg48TdJNdyhEB8Xn1L36bT9Pv6GUtlKjHxOys8xkaF/rQq3XJE+bAurSK/AgIz5mGFsb77cn9Pb20+WCScw==
+
+"@prettier/parse-srcset@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@prettier/parse-srcset/-/parse-srcset-3.1.0.tgz#10a6785b84812b5ec506c16812fc2e3c6bb10b9e"
+  integrity sha512-FIRv2rZotO9NP/r66taYqD1zICpPiBbrECqjKV/xqNotqDxF7fLzzUeK+1RSRx9Tenk0DajR/GcRmTJ2qtHaKQ==
 
 "@rolldown/binding-android-arm-eabi@1.2.16":
   version "1.2.16"
@@ -1888,7 +1893,16 @@ postcss@^8.5.30:
     picocolors "^1.1.1"
     source-map-js "^1.2.2"
 
-prettier@^3.8.1:
+prettier-plugin-astro@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-1.1.2.tgz#12042eb0b32733f4c2228f92fb0eb0ff5a7c4029"
+  integrity sha512-vKyJW7Bb/QcIPUebEehbG+Tn+3yTIhoJ8ecm6NyJgcOj5T2xP+eF1IxY4zv809YyA69nV4ZFj+H9mdpC5cTaQA==
+  dependencies:
+    "@astrojs/compiler-rs" "^0.5.2"
+    "@prettier/parse-srcset" "^3.1.0"
+    sass-formatter "^0.8.0"
+
+prettier@^3.8.1, prettier@^3.9.10:
   version "3.9.10"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.9.10.tgz#ac378e432f1a7381518f2e080816bbaefa38d585"
   integrity sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==
@@ -1989,6 +2003,18 @@ rolldown@^1.2.14, rolldown@~1.2.14:
     "@rolldown/binding-openharmony-arm64" "1.2.16"
     "@rolldown/binding-win32-arm64-msvc" "1.2.16"
     "@rolldown/binding-win32-x64-msvc" "1.2.16"
+
+s.color@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/s.color/-/s.color-0.0.15.tgz#6b32cd22d8dba95703a5122ddede2020a1560186"
+  integrity sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA==
+
+sass-formatter@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/sass-formatter/-/sass-formatter-0.8.0.tgz#bd1df0d141e628c567194a28b283ede3fed80987"
+  integrity sha512-Nf4eMGE2O5vnJG7KPCRyksWS9gVKSYoUWtPeMXRRxwZSPVQhSGtL602xVYS65LvMkHmkvKa7xpauF0+/5pPwrg==
+  dependencies:
+    suf-log "^2.5.3"
 
 satteri@^0.10.5:
   version "0.10.5"
@@ -2164,6 +2190,13 @@ strnum@^2.4.2:
   integrity sha512-UM4nTLWzQiDBseVxUGxN0wJzIk0UU89Qi7pKXz9qISo+lhviJikTuikBsK/oFRlpvYHvSdz0TVoLyQ+sEpYwxA==
   dependencies:
     anynum "^1.0.1"
+
+suf-log@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/suf-log/-/suf-log-2.5.3.tgz#0919a7fceea532a99b578c97814c4e335b2d64d1"
+  integrity sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==
+  dependencies:
+    s.color "0.0.15"
 
 svgo@^4.1.0:
   version "4.1.0"

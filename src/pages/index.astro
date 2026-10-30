@@ -1,13 +1,13 @@
 ---
-import type { GetStaticPaths } from "astro";
-import PostList from "../layouts/PostList.astro";
+import type { GetStaticPaths } from 'astro';
+import PostList from '../layouts/PostList.astro';
 
 import { tags } from '../content';
 
 export const getStaticPaths = (() => {
-	return tags.map((tag) => ({
-		params: { tag: tag.slug },
-	}));
+  return tags.map((tag) => ({
+    params: { tag: tag.slug },
+  }));
 }) satisfies GetStaticPaths;
 ---
 

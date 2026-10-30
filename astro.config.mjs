@@ -7,11 +7,11 @@ import { hastExternalLinks } from './src/hast/hast-external-links';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://finnalyze.org',
-	integrations: [mdx(), sitemap()],
-	markdown: {
-		processor: satteri({
-			hastPlugins: [hastExternalLinks],
-		})
-	}
+  site: 'https://finnalyze.org',
+  integrations: [mdx(), sitemap()],
+  markdown: {
+    processor: satteri({
+      hastPlugins: [hastExternalLinks],
+    }),
+  },
 });

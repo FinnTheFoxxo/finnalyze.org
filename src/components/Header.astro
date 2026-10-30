@@ -1,66 +1,66 @@
 <header>
-	<nav>
-		<a class="logo-container" href="/">
-			<img class="logo" src="/logo.svg" alt="Logo" />
-		</a>
-	</nav>
-	<div id="theme-toggle">
-		<i class="dark-only fa-solid fa-moon"></i>
-		<i class="light-only fa-solid fa-sun"></i>
-	</div>
+  <nav>
+    <a class="logo-container" href="/">
+      <img class="logo" src="/logo.svg" alt="Logo" />
+    </a>
+  </nav>
+  <div id="theme-toggle">
+    <i class="dark-only fa-solid fa-moon"></i>
+    <i class="light-only fa-solid fa-sun"></i>
+  </div>
 </header>
 
 <script>
-	const updateTheme = (theme: 'dark' | 'light') => {
-		document.documentElement.dataset.theme = theme;
-		localStorage.setItem("theme", theme);
-		window.theme = theme;
-	};
+  const updateTheme = (theme: 'dark' | 'light') => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    window.theme = theme;
+  };
 
-	document.addEventListener("astro:page-load", () => {
-		const themeToggle = document.getElementById("theme-toggle");
-		
-		themeToggle?.addEventListener("click", () => {
-			const currentTheme = localStorage.getItem("theme") || "dark";
-			const newTheme = currentTheme === "dark" ? "light" : "dark";
-			updateTheme(newTheme);
-		});
-	});
+  document.addEventListener('astro:page-load', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+
+    themeToggle?.addEventListener('click', () => {
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      updateTheme(newTheme);
+    });
+  });
 </script>
 
 <style>
-	header {
-		margin: 0;
-		padding: 0 3em;
-		background-color: var(--header-bg);
-		color: var(--header-text);
-		height: 3.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+  header {
+    margin: 0;
+    padding: 0 3em;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-	header a {
-		color: var(--text);
-		text-decoration: none;
-	}
+  header a {
+    color: var(--text);
+    text-decoration: none;
+  }
 
-	.logo-container {
-		display: flex;
-	}
+  .logo-container {
+    display: flex;
+  }
 
-	.logo {
-		height: 2rem;
-		margin-top: 0.45rem;
-	}
+  .logo {
+    height: 2rem;
+    margin-top: 0.45rem;
+  }
 
-	#theme-toggle {
-		cursor: pointer;
-	}
+  #theme-toggle {
+    cursor: pointer;
+  }
 
-	@media (max-width: 720px) {
-		header {
-			padding: 0 1em;
-		}
-	}
+  @media (max-width: 720px) {
+    header {
+      padding: 0 1em;
+    }
+  }
 </style>

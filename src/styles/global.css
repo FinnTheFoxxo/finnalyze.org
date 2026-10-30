@@ -5,84 +5,93 @@
 @import '@fontsource/inter';
 
 html[data-theme='dark'] {
-	--text: #ffffff;
-	--background: #242424;
-	--primary: #1d1d1d;
-	--header-bg: #1a1a1a;
-	--header-text: #ffffff;
-	--accent: #ff8000;
-	--accent-light: #f39538;
-	--text-light: #bcbcbc;
-	--tag-bg: #161616;
-	--tag-color: var(--accent-light);
-	--white: #ffffff;
+  --text: #ffffff;
+  --background: #242424;
+  --primary: #1d1d1d;
+  --header-bg: #1a1a1a;
+  --header-text: #ffffff;
+  --accent: #ff8000;
+  --accent-light: #f39538;
+  --text-light: #bcbcbc;
+  --tag-bg: #161616;
+  --tag-color: var(--accent-light);
+  --white: #ffffff;
 }
 
 html[data-theme='light'] {
-	--text: #000000;
-	--background: #f4f4f4;
-	--primary: #ffffff;
-	--header-bg: #242424;
-	--header-text: #ffffff;
-	--accent: #ff8000;
-	--accent-light: #f39538;
-	--text-light: #4a4a4a;
-	--tag-bg: var(--accent-light);
-	--tag-color: #ffffff;
-	--white: #ffffff;
+  --text: #000000;
+  --background: #f4f4f4;
+  --primary: #ffffff;
+  --header-bg: #242424;
+  --header-text: #ffffff;
+  --accent: #ff8000;
+  --accent-light: #f39538;
+  --text-light: #4a4a4a;
+  --tag-bg: var(--accent-light);
+  --tag-color: #ffffff;
+  --white: #ffffff;
 }
 
 html[data-theme='dark'] .light-only {
-	display: none !important;
+  display: none !important;
 }
 
 html[data-theme='light'] .dark-only {
-	display: none !important;
+  display: none !important;
 }
 
-*, *:before, *:after {
-	box-sizing: border-box;
-	transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  transition:
+    color 0.1s ease-in-out,
+    background-color 0.1s ease-in-out;
 }
 
 html {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 body {
-	font-family: Inter, sans-serif;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background-color: var(--background);
-	color: var(--text);
-	line-height: 1.7;
+  font-family: Inter, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.7;
 }
 
 .date {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 main {
-	padding: 1em 3em;
-	width: 100%;
+  padding: 1em 3em;
+  width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0.5em 0;
-	padding: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0;
+  padding: 0;
 }
 
 a {
-	color: var(--accent);
-	text-decoration: none;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 @media (max-width: 720px) {
-	body {
-		font-size: 0.9rem;
-	}
-	main {
-		padding: 1em;
-	}
+  body {
+    font-size: 0.9rem;
+  }
+  main {
+    padding: 1em;
+  }
 }
