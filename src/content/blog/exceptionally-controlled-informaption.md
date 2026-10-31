@@ -156,4 +156,4 @@ Hello! Finn here! Thank you so, so, so much for taking the time to read my piece
 I host no advertisements on this domain, and I’m currently unemployed and in college. If you wish to support my work, my future endeavors, or simply want to show your appreciation, you can donate at my [Ko-fi](https://ko-fi.com/fiinn). Of course, there is no obligation; all content on this domain will remain free, regardless of whether you donate or not. 
 
 ---
-# <p style="color:#ff8000">TOP-SECRET//SI-ECI FINN//NOFORN</p>
+# <p style="color:#ff8000;text-align:center">TOP-SECRET//SI-ECI FINN//NOFORN</p>
